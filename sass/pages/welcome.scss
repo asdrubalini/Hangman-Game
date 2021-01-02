@@ -1,0 +1,18 @@
+.welcome {
+    &__title {
+        text-align: center;
+        font-size: 3rem;
+    }
+
+    &__button {
+        display: flex;
+
+        &--single {
+            justify-content: flex-end;
+        }
+
+        &--multi {
+            justify-content: flex-start;
+        }
+    }
+}

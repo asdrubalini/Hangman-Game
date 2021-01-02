@@ -1,0 +1,10 @@
+.welcome__title {
+  text-align: center;
+  font-size: 3rem; }
+
+.welcome__button {
+  display: flex; }
+  .welcome__button--single {
+    justify-content: flex-end; }
+  .welcome__button--multi {
+    justify-content: flex-start; }
