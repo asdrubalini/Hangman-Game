@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+include_once "logic.php";
 
 /** 
  * Parameters are initialized only on POST requests.
@@ -23,13 +24,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         die("Error: missing phrase");
     }
 
-    $_SESSION["gamemode"] = $gamemode;
-    $_SESSION["phrase"] = $phrase;
-    $_SESSION["stage"] = 0;
-    $_SESSION["status"] = "playing";
-    $_SESSION["tried_words"] = array("A", "X");
+    // No need to reinizialize the game if the user is alredy playing
+    if (!is_playing()) {
+        initialize_game($gamemode, $phrase);
+    }
+
 
 } else if ($_SERVER["REQUEST_METHOD"] === "GET") {
+    // Handle reloads which will be processed as a GET request
     $status = $_SESSION["status"];
 
     // Redirect the user if a game has not been started
@@ -43,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <html>
 
     <head>
-        <?php include("partials/head.php") ?>
+        <?php include "partials/head.php" ?>
     </head>
 
     <body>
@@ -54,11 +56,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <p class="welcome__title">Impiccato</p>
             </div>
             
-            <?php include("partials/word-guess.php") ?>
+            <?php include "partials/word-guess.php" ?>
         
         </div>
 
-        <?php include("partials/javascript.php") ?>
+        <?php include "partials/javascript.php" ?>
         <script src="js/game.js"></script>
 
     </body>

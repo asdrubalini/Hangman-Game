@@ -2,9 +2,34 @@ const phraseInput = $("#phrase-guess-input");
 const letterInput = $("#letter-guess-input");
 
 
-
 const apiGuessPhrase = (phrase) => {
+    const data = new FormData();
+    data.append("phrase", phrase);
 
+    fetch(
+        "api/guess_phrase.php",
+        {
+            method: "POST",
+            body: data
+        }).then(response => {
+            if (response.status !== 200) {
+                console.log("Got error while requesting API");
+                return;
+            }
+
+            response.json().then(data => {
+                if (!data.success) {
+                    console.error("Error: " + data.error)
+                    return;
+                }
+
+                if (data.guess_status) {
+
+                } else {
+
+                }
+            })
+        })
 }
 
 const apiGuessLetter = (letter) => {

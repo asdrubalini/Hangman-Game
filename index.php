@@ -2,7 +2,7 @@
 
 <head>
 
-    <?php include("partials/head.php") ?>
+    <?php include "partials/head.php" ?>
 
 </head>
 
@@ -110,7 +110,7 @@
 
     </div>
 
-    <?php include("partials/javascript.php") ?>
+    <?php include "partials/javascript.php" ?>
     <script src="js/welcome.js"></script>
 </body>
 

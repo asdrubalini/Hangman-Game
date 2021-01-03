@@ -5,7 +5,7 @@
         </div>
 
         <div class="row">
-            <pre class="word-guess__word">_____ ______</pre>
+            <pre class="word-guess__word" id="word"><?php echo get_hidden_phrase(); ?></pre>
         </div>
     </div>
 </div>
@@ -22,8 +22,8 @@
         <h5 class="word-guess__subtitle">Cronologia del gioco</h5>
 
         <div class="word_guess__chronology" id="chronology">
-            <?php foreach($_SESSION["tried_words"] as $word) : ?>
-                <span><?php echo $word ?></span>
+            <?php foreach($_SESSION["tried_chars"] as $char) : ?>
+                <span><?php echo $char ?></span>
             <?php endforeach ?>
         </div>
     </div>
