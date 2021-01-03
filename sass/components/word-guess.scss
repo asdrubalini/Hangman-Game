@@ -1,0 +1,22 @@
+.word-guess {
+    &__title {
+
+    }
+
+    &__subtitle {
+
+    }
+
+    &__word {
+        letter-spacing: 10px;
+        font-size: 6rem;
+    }
+
+    &__chronology {
+        display: flex;
+    }
+
+    &__condemned {
+        width: 18rem;
+    }
+}

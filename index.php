@@ -1,6 +1,5 @@
 <html>
 
-
 <head>
 
     <?php include("partials/head.php") ?>
@@ -26,7 +25,8 @@
                     <form>
                         <div class="form-group">
                             <input class="form-control" id="userInputPhrase" placeholder="Inserisci la frase da indovinare">
-                            <small class="form-text text-muted">Assicurati che l'altro giocatore non veda la frase che hai scritto!</small>
+                            <small class="form-text text-muted" id="modal-other-player-hint">Assicurati che l'altro giocatore non veda la frase che hai scritto!</small>
+                            <small class="form-text text-danger" id="modal-empty-error-hint" style="display: none">Devi inserire una o più parole!</small>
                         </div>
                     </form>
                 </div>
@@ -65,8 +65,8 @@
 
     <!-- Hidden form used to simulate a GET-like POST redirect so we can hide parameters -->
     <form method="POST" action="game.php" style="display: none" id="submitGame">
-        <input type="text" id="gameType" name="gameType">
-        <input type="text" id="userPhrase" name="userPhrase">
+        <input type="text" id="gamemode" name="gamemode">
+        <input type="text" id="phrase" name="phrase">
     </form>
 
     <div class="container welcome">
@@ -111,6 +111,7 @@
     </div>
 
     <?php include("partials/javascript.php") ?>
+    <script src="js/welcome.js"></script>
 </body>
 
 </html>

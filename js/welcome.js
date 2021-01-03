@@ -11,14 +11,22 @@ $("#start-multiplayer").click((e) => {
 // Modal buttons
 
 $("#multiplayer-launch-game").click((e) => {
-    $("#gameType").val("multiplayer");
-    $("#userPhrase").val($("#userInputPhrase").val());
+    $("#gamemode").val("multiplayer");
 
+    const phrase = $("#userInputPhrase").val();
+
+    if (phrase === null || phrase === "") {
+        $("#modal-other-player-hint").hide();
+        $("#modal-empty-error-hint").show();
+        return;
+    }
+
+    $("#phrase").val(phrase);
     $("#submitGame").submit();
 });
 
 $("#singleplayer-launch-game").click((e) => {
-    $("#gameType").val("singleplayer");
+    $("#gamemode").val("singleplayer");
 
     $("#submitGame").submit();
 });

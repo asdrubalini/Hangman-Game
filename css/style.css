@@ -8,3 +8,13 @@
     justify-content: flex-end; }
   .welcome__button--multi {
     justify-content: flex-start; }
+
+.word-guess__word {
+  letter-spacing: 10px;
+  font-size: 6rem; }
+
+.word-guess__chronology {
+  display: flex; }
+
+.word-guess__condemned {
+  width: 18rem; }
