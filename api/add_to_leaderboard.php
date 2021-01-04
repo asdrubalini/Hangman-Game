@@ -9,7 +9,7 @@ die_if_missing_parameters(array("username"));
 
 $username = $_POST["username"];
 
-$leaderboardFile = fopen("../storage/leaderboard.txt", "a") or die("Cannot open leaderboard file");
+$leaderboardFile = fopen(__DIR__ . "/../storage/leaderboard.txt", "a") or die("Cannot open leaderboard file");
 
 $data = [
     "username" => $username,

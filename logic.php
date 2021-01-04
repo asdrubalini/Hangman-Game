@@ -89,10 +89,9 @@ function guess_letter($letter) {
 
     }
 
-    if ($isGuessRight) {
-        array_push($_SESSION["tried_chars"], $userLetter);
-    
-    } else {
+    array_push($_SESSION["tried_chars"], $userLetter);
+
+    if (!$isGuessRight) {
         $_SESSION["stage"] += 1;
     }
 
@@ -102,4 +101,15 @@ function guess_letter($letter) {
     }
 
     return $isGuessRight;
+}
+
+function get_leaderboard() {
+    $content = file_get_contents(__DIR__ . "/storage/leaderboard.txt");
+    $leaderboard = array();
+
+    foreach (explode("\n", $content) as $obj) {
+        array_push($leaderboard, json_decode($obj));
+    }
+
+    return $leaderboard;
 }

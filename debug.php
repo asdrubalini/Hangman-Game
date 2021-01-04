@@ -1,3 +1,5 @@
 <?php
 
-echo __DIR__;
+include_once __DIR__ . "/logic.php";
+
+get_leaderboard();
