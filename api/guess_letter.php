@@ -6,16 +6,18 @@ include_once __DIR__ . "/common.php";
 common_init();
 die_if_not_playing();
 
-die_if_missing_parameters(array("phrase"));
+die_if_missing_parameters(array("letter"));
 
-$phrase = $_POST["phrase"];
+$letter = $_POST["letter"];
 
 $res = [
     "success" => true,
-    "guess_status" => guess_phrase($phrase),
+    "guess_status" => guess_letter($letter),
+    "tried_chars" => $_SESSION["tried_chars"],
     "hidden_phrase" => get_hidden_phrase(),
+    "stage" => $_SESSION["stage"],
+    "status" => $_SESSION["status"],
     "duration" => $_SESSION["duration"],
-    "errors" => $_SESSION["stage"]
 ];
 
 die(json_encode($res));

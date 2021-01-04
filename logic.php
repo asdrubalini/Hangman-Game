@@ -3,7 +3,7 @@
 session_start();
 
 function generate_random_phrase() {
-    $dizionario = include "dati.php";
+    $dizionario = include_once __DIR__ . "/dati.php";
 
     return $dizionario[array_rand($dizionario)];
 }
@@ -18,6 +18,8 @@ function initialize_game($gamemode, $phrase) {
     $_SESSION["stage"] = 0;
     $_SESSION["status"] = "playing";
     $_SESSION["tried_chars"] = array();
+    $_SESSION["start_time"] = time(); // Start time in UNIX epoch
+    $_SESSION["attempts"] = 0;
 }
 
 function is_playing() {
@@ -55,13 +57,48 @@ function get_hidden_phrase() {
 function guess_phrase($phrase) {
     // Convert both strings to lowercase
     $userPhrase = strtolower($phrase);
-    $correntPhrase = strtolower($_SESSION["phrase"]);
+    $gamePhrase = strtolower($_SESSION["phrase"]);
 
-    $isGuessRight = $userPhrase === $correntPhrase;
+    $isGuessRight = $userPhrase === $gamePhrase;
+    
+    $_SESSION["attempts"] += 1;
 
     // User has won, set session status accordingly.
     if ($isGuessRight) {
         $_SESSION["status"] = "won";
+        $_SESSION["duration"] = time() - $_SESSION["start_time"];
+    }
+
+    return $isGuessRight;
+}
+
+function guess_letter($letter) {
+    $userLetter = strtolower($letter);
+    $gamePhrase = strtolower($_SESSION["phrase"]);
+    $triedChars = $_SESSION["tried_chars"];
+
+    $isGuessRight = null;
+
+    $_SESSION["attempts"] += 1;
+
+    if (in_array($userLetter, $triedChars)) {
+        $isGuessRight = false;
+
+    } else {
+        $isGuessRight = strpos($gamePhrase, $userLetter) !== false;
+
+    }
+
+    if ($isGuessRight) {
+        array_push($_SESSION["tried_chars"], $userLetter);
+    
+    } else {
+        $_SESSION["stage"] += 1;
+    }
+
+    if (strtolower(get_hidden_phrase()) === $gamePhrase) {
+        $_SESSION["status"] = "won";
+        $_SESSION["duration"] = time() - $_SESSION["start_time"];
     }
 
     return $isGuessRight;

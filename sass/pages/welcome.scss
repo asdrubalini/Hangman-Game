@@ -1,18 +1,14 @@
 .welcome {
     &__title {
-        text-align: center;
         font-size: 3rem;
     }
 
-    &__button {
+    &__buttons {
         display: flex;
+        justify-content: center;
+    }
 
-        &--single {
-            justify-content: flex-end;
-        }
-
-        &--multi {
-            justify-content: flex-start;
-        }
+    &__button {
+        margin: 0 5px;
     }
 }

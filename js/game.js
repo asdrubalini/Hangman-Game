@@ -2,6 +2,40 @@ const phraseInput = $("#phrase-guess-input");
 const letterInput = $("#letter-guess-input");
 
 
+const onGameWon = (time_elapsed, errors_count) => {
+    const minutes = Math.floor(time_elapsed / 60);
+    const seconds = time_elapsed - (minutes * 60);
+
+    console.log(time_elapsed);
+
+    $("#elapsed-minutes").text(minutes);
+    $("#elapsed-seconds").text(seconds);
+    $("#errors-count").text(errors_count);
+
+    $("#won-modal").modal("show");
+}
+
+const onGameLost = () => {
+    $("#lost-modal").modal("show");
+}
+
+const updateCharList = () => {
+    fetch(
+        "partials/game/tried_chars_list.php",
+        {
+            method: "GET",
+        }).then(response => {
+            if (response.status !== 200) {
+                console.log("Got error while requesting API");
+                return;
+            }
+
+            response.text().then(data => {
+                $("#chronology").html(data);
+            })
+        })
+}
+
 const apiGuessPhrase = (phrase) => {
     const data = new FormData();
     data.append("phrase", phrase);
@@ -23,6 +57,14 @@ const apiGuessPhrase = (phrase) => {
                     return;
                 }
 
+                $("#word").text(data.hidden_phrase);
+
+                if (data.status === "won") {
+                    onGameWon(data.duration, data.stage);
+                } else if (data.status === "lost") {
+                    onGameLost();
+                }
+
                 if (data.guess_status) {
 
                 } else {
@@ -33,7 +75,44 @@ const apiGuessPhrase = (phrase) => {
 }
 
 const apiGuessLetter = (letter) => {
+    const data = new FormData();
+    data.append("letter", letter);
 
+    fetch(
+        "api/guess_letter.php",
+        {
+            method: "POST",
+            body: data
+        }).then(response => {
+            if (response.status !== 200) {
+                console.log("Got error while requesting API");
+                return;
+            }
+
+            response.json().then(data => {
+                if (!data.success) {
+                    console.error("Error: " + data.error)
+                    return;
+                }
+
+                $("#word").text(data.hidden_phrase);
+                $("#chronology").empty();
+
+                if (data.status === "won") {
+                    onGameWon(data.duration, data.stage);
+                } else if (data.status === "lost") {
+                    onGameLost();
+                }
+
+                updateCharList();
+
+                if (data.guess_status) {
+                    // TODO
+                } else {
+
+                }
+            })
+        })
 }
 
 phraseInput.keypress((e) => {
@@ -58,3 +137,63 @@ letterInput.keypress((e) => {
     }
 
 });
+
+$("#won-modal-exit").click((e) => {
+    window.location = "index.php";
+})
+
+$("#won-modal-leaderboard-button").click((e) => {
+    $("#leaderboard-ask-container").css("display", "flex");
+})
+
+$("#leaderboard-username-add-button").click((e) => {
+    let username = $("#leaderboard-username").val();
+
+    const data = new FormData();
+    data.append("username", username);
+
+    fetch(
+        "api/add_to_leaderboard.php",
+        {
+            method: "POST",
+            body: data
+        }).then(response => {
+            if (response.status !== 200) {
+                console.log("Got error while requesting API");
+                return;
+            }
+
+            response.json().then(data => {
+                if (data.success) {
+                    console.log("Username added successfully");
+                } else {
+                    console.log("Error while adding username");
+                }
+
+            })
+        })
+})
+
+$("#game-interrupt").click((e) => {
+    $("#interrupt-modal").modal("show");
+})
+
+$("#interrupt-modal-confirm").click((e) => {
+    fetch(
+        "api/reset_game.php",
+        {
+            method: "POST",
+        }).then(response => {
+            if (response.status !== 200) {
+                console.log("Got error while requesting API");
+                return;
+            }
+
+            response.json().then(data => {
+                if (data.success) {
+                    window.location = "index.php";
+                }
+
+            })
+        })
+})

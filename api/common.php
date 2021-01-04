@@ -1,6 +1,6 @@
 <?php
 
-include_once "../logic.php";
+include_once __DIR__ . "/../logic.php";
 
 function assert_post_request() {
     if ($_SERVER["REQUEST_METHOD"] !== "POST") {
@@ -41,5 +41,4 @@ function die_if_missing_parameters($parameters) {
 function common_init() {
     assert_post_request();
     set_json_reponse();
-    die_if_not_playing();
 }

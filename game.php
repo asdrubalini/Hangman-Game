@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-include_once "logic.php";
+include_once __DIR__ . "/logic.php";
 
 /** 
  * Parameters are initialized only on POST requests.
@@ -17,11 +17,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $phrase = $_POST["phrase"];
 
     if ($gamemode !== "singleplayer" && $gamemode !== "multiplayer") {
-        die("Error: wrong game type");
+        die("Unexpected error: wrong game type");
     }
 
     if ($gamemode === "multiplayer" && !isset($phrase)) {
-        die("Error: missing phrase");
+        die("Unexpected error: missing phrase");
     }
 
     // No need to reinizialize the game if the user is alredy playing
@@ -45,22 +45,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <html>
 
     <head>
-        <?php include "partials/head.php" ?>
+        <?php include_once __DIR__ . "/partials/head.php" ?>
     </head>
 
     <body>
 
-        <div class="container welcome">
+        <?php include_once __DIR__ . "/partials/header.php" ?>
 
-            <div class="row">
-                <p class="welcome__title">Impiccato</p>
-            </div>
-            
-            <?php include "partials/word-guess.php" ?>
-        
+        <div class="container">
+            <?php include_once __DIR__ . "/partials/word-guess.php" ?>
         </div>
 
-        <?php include "partials/javascript.php" ?>
+        <?php include_once __DIR__ . "/partials/javascript.php" ?>
         <script src="js/game.js"></script>
 
     </body>

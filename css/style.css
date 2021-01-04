@@ -1,20 +1,39 @@
 .welcome__title {
-  text-align: center;
   font-size: 3rem; }
 
+.welcome__buttons {
+  display: flex;
+  justify-content: center; }
+
 .welcome__button {
-  display: flex; }
-  .welcome__button--single {
-    justify-content: flex-end; }
-  .welcome__button--multi {
-    justify-content: flex-start; }
+  margin: 0 5px; }
 
 .word-guess__word {
   letter-spacing: 10px;
   font-size: 6rem; }
 
 .word-guess__chronology {
-  display: flex; }
+  display: flex;
+  flex-direction: row; }
 
 .word-guess__condemned {
   width: 18rem; }
+
+.leaderboard-username {
+  display: none;
+  margin-top: 10px;
+  flex-direction: column; }
+  .leaderboard-username__button {
+    margin-top: 5px; }
+
+.letter-badge {
+  height: 2rem !important;
+  width: 2rem !important;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 3px; }
+
+#elapsed-minutes, #elapsed-seconds, #errors-count {
+  margin: 0 3px; }

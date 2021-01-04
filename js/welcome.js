@@ -8,6 +8,10 @@ $("#start-multiplayer").click((e) => {
     $("#multiplayer-modal").modal("show");
 });
 
+$("#start-resume").click((e) => {
+    $("#resume-modal").modal("show");
+});
+
 // Modal buttons
 
 $("#multiplayer-launch-game").click((e) => {
@@ -29,4 +33,8 @@ $("#singleplayer-launch-game").click((e) => {
     $("#gamemode").val("singleplayer");
 
     $("#submitGame").submit();
+});
+
+$("#resume-launch-game").click((e) => {
+    window.location = "game.php";
 });
