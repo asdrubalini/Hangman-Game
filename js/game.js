@@ -19,6 +19,10 @@ const onGameLost = () => {
     $("#lost-modal").modal("show");
 }
 
+const onStageUpdated = (new_stage, condemned_image) => {
+    $("#condemned").attr("src", condemned_image);
+}
+
 const updateCharList = () => {
     fetch(
         "partials/game/tried_chars_list.php",
@@ -58,6 +62,7 @@ const apiGuessPhrase = (phrase) => {
                 }
 
                 $("#word").text(data.hidden_phrase);
+                onStageUpdated(data.stage, data.condemned_image);
 
                 if (data.status === "won") {
                     onGameWon(data.duration, data.stage);
@@ -97,6 +102,7 @@ const apiGuessLetter = (letter) => {
 
                 $("#word").text(data.hidden_phrase);
                 $("#chronology").empty();
+                onStageUpdated(data.stage, data.condemned_image);
 
                 if (data.status === "won") {
                     onGameWon(data.duration, data.stage);
@@ -138,7 +144,7 @@ letterInput.keypress((e) => {
 
 });
 
-$("#won-modal-exit").click((e) => {
+$("#won-modal-no, #won-modal-close").click((e) => {
     window.location = "index.php";
 })
 

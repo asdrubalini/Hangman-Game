@@ -1,12 +1,12 @@
 <!-- Won modal -->
-<div class="modal fade" id="won-modal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="won-modal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
 
             <div class="modal-header">
                 <h5 class="modal-title">Hai vinto!</h5>
 
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" id="won-modal-close" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -30,8 +30,33 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" id="won-modal-exit">No</button>
+                <button type="button" class="btn btn-secondary" id="won-modal-no">No</button>
                 <button type="button" class="btn btn-primary" id="won-modal-leaderboard-button">Si</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Lost modal -->
+<div class="modal fade" id="lost-modal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">Hai perso :(</h5>
+
+                <button type="button" class="close" id="lost-modal-close" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="lost-modal-no">No</button>
+                <button type="button" class="btn btn-primary" id="lost-modal-yes">Si</button>
             </div>
 
         </div>
@@ -79,7 +104,7 @@
     <div class="col">
         <h5 class="word-guess__subtitle">Condannato</h5>
 
-        <img src="images/stages/7.png" class="img-fluid word-guess__condemned">
+        <img src="<?php echo get_condemned_image() ?>" id="condemned" class="img-fluid word-guess__condemned">
     </div>
 
     <div class="col">

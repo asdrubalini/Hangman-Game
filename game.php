@@ -16,6 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $gamemode = $_POST["gamemode"];
     $phrase = $_POST["phrase"];
 
+    // Validate gamemode
     if ($gamemode !== "singleplayer" && $gamemode !== "multiplayer") {
         die("Unexpected error: wrong game type");
     }
@@ -27,11 +28,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // No need to reinizialize the game if the user is alredy playing
     if (!is_playing()) {
         initialize_game($gamemode, $phrase);
+
+        /**
+         * After initializing the game, re-redirect to this page
+         * but with a GET request, so that parameters are erased and
+         * won't be passed to the page after every reload.
+         */
+        header("Location: game.php");
     }
 
-
 } else if ($_SERVER["REQUEST_METHOD"] === "GET") {
-    // Handle reloads which will be processed as a GET request
+
     $status = $_SESSION["status"];
 
     // Redirect the user if a game has not been started

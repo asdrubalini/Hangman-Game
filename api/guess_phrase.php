@@ -15,7 +15,8 @@ $res = [
     "guess_status" => guess_phrase($phrase),
     "hidden_phrase" => get_hidden_phrase(),
     "duration" => $_SESSION["duration"],
-    "errors" => $_SESSION["stage"]
+    "errors" => $_SESSION["stage"],
+    "condemned_image" => get_condemned_image()
 ];
 
 die(json_encode($res));

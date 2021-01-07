@@ -4,6 +4,8 @@
  * Handle the logic of the game
  */
 
+include_once __DIR__ . "/debug.php";
+
 session_start();
 
 function generate_random_phrase() {
@@ -89,23 +91,25 @@ function get_hidden_phrase() {
      * and so on...
      */
     $actualPhrase = $_SESSION["phrase"];
+    $lowerCasePhrase = strtolower($_SESSION["phrase"]);
     $triedChars = $_SESSION["tried_chars"];
     $hiddenPhrase = "";
 
-    foreach (str_split($actualPhrase) as $char) {
+    for ($i = 0; $i < strlen($actualPhrase); $i++) {
+        $currentChar = $lowerCasePhrase[$i];
 
         // Spaces must not be converted
-        if ($char === " ") {
+        if ($currentChar === " ") {
             $hiddenPhrase .= " ";
         
         } else {
             // If the char has been tried by the user and
             // exist in the phrase, append it to the hidden phrase string.
             if (
-                in_array(strtolower($char), $triedChars) &&
-                in_array(strtolower($char), str_split($actualPhrase))
+                in_array($currentChar, $triedChars) &&
+                in_array($currentChar, str_split($lowerCasePhrase))
             ) {
-                $hiddenPhrase .= $char;
+                $hiddenPhrase .= $actualPhrase[$i];
             } else {
                 $hiddenPhrase .= "_";
             }
@@ -113,6 +117,14 @@ function get_hidden_phrase() {
     }
 
     return $hiddenPhrase;
+}
+
+function get_condemned_image() {
+    /**
+     * Return the current condemned image as an absolute path for
+     * the browser to render.
+     */
+    return "images/stages/" . ($_SESSION["stage"] + 1) . ".png";
 }
 
 function guess_phrase($phrase) {
@@ -138,17 +150,14 @@ function guess_letter($letter) {
     $gamePhrase = strtolower($_SESSION["phrase"]);
     $triedChars = $_SESSION["tried_chars"];
 
-    $isGuessRight = null;
+    // Don't do anything if the letter has been already tried before.
+    if (in_array($userLetter, $triedChars)) {
+        return;
+    }
 
     $_SESSION["attempts"] += 1;
 
-    if (in_array($userLetter, $triedChars)) {
-        $isGuessRight = false;
-
-    } else {
-        $isGuessRight = strpos($gamePhrase, $userLetter) !== false;
-
-    }
+    $isGuessRight = false !== strpos($gamePhrase, $userLetter);
 
     array_push($_SESSION["tried_chars"], $userLetter);
 
@@ -156,7 +165,11 @@ function guess_letter($letter) {
         $_SESSION["stage"] += 1;
     }
 
-    if (strtolower(get_hidden_phrase()) === $gamePhrase) {
+    if ($_SESSION["stage"] === 6) {
+        $_SESSION["status"] = "lost";
+        $_SESSION["duration"] = time() - $_SESSION["start_time"];
+
+    } else if (strtolower(get_hidden_phrase()) === $gamePhrase) {
         $_SESSION["status"] = "won";
         $_SESSION["duration"] = time() - $_SESSION["start_time"];
     }

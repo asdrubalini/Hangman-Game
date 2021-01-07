@@ -1,5 +1,5 @@
 <?php
 
-include_once __DIR__ . "/logic.php";
-
-get_leaderboard();
+function debug_log($text) {
+    file_put_contents('/var/www/html/logs.txt', $text . "\n", FILE_APPEND);
+}
