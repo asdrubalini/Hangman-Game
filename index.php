@@ -22,7 +22,7 @@
                     </div>
 
                     <div class="modal-body">
-                        <p>Gioca contro un'altro giocatore. La frase verrà inserita dal player 2.</p>
+                        <p>Gioca contro un altro giocatore. La frase verrà inserita dal player 2.</p>
                         <form>
                             <div class="form-group">
                                 <input class="form-control" id="userInputPhrase" placeholder="Inserisci la frase da indovinare">

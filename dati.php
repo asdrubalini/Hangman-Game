@@ -2,6 +2,6 @@
 
 return array(
     "Babbo natale",
-    // "La befana vien di notte",
-    // "Cerbero Podcast",
+    "La befana vien di notte",
+    "Cerbero Podcast"
 );
