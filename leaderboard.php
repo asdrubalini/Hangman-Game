@@ -21,7 +21,7 @@ $data = database_fetch_results($sort);
         <div class="row">
             <div class="col">
                 <div class="btn-group btn-group-toggle" data-toggle="Sort">
-                    <label id="duration" class="selector btn btn-secondary <?php echo $sort === 'duration' ? 'active' : '' ?>"">Speedrun</label>
+                    <label id="duration" class="selector btn btn-secondary <?php echo $sort === 'duration' ? 'active' : '' ?>"">Durata</label>
                     <label id="attempts" class="selector btn btn-secondary <?php echo $sort === 'attempts' ? 'active' : '' ?>">Tentativi</label>
                     <label id="date" class="selector btn btn-secondary <?php echo $sort === 'date' ? 'active' : '' ?>"">Più recenti</label>
                 </div>
@@ -36,7 +36,7 @@ $data = database_fetch_results($sort);
                         <tr>
                             <th scope="col">Username</th>
                             <th scope="col">Gamemode</th>
-                            <th scope="col">Duration (ms)</th>
+                            <th scope="col">Duration (seconds)</th>
                             <th scope="col">Attempts</th>
                             <th scope="col">Date</th>
                             <th scope="col">Phrase</th>
@@ -47,12 +47,12 @@ $data = database_fetch_results($sort);
 
                         <?php foreach ($data as $row) : ?>
                             <tr>
-                                <th scope="row"><?php echo $row["username"] ?></th>
+                                <th scope="row"><?php echo htmlspecialchars($row["username"]) ?></th>
                                 <td><?php echo ucwords($row["gamemode"]) ?></td>
-                                <td><?php echo round($row["duration"], 2) ?></td>
+                                <td><?php echo round($row["duration"], 3) ?></td>
                                 <td><?php echo $row["attempts"] ?></td>
                                 <td><?php echo date("Y-m-d H:i:s", $row["date"]) ?></td>
-                                <td><?php echo $row["phrase"] ?></td>
+                                <td><?php echo htmlspecialchars($row["phrase"]) ?></td>
                             </tr>
                         <?php endforeach ?>
 
