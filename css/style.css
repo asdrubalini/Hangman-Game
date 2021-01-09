@@ -41,7 +41,7 @@
   justify-content: center;
   margin: 4px; }
 
-.game-card {
+.padded-card {
   border: 1.25px solid rgba(0, 0, 0, 0.125) !important;
   border-radius: .3rem !important;
   margin: 6px;
