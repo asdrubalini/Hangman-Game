@@ -37,7 +37,7 @@ $data = database_fetch_results($sort);
                             <tr>
                                 <th scope="col">Username</th>
                                 <th scope="col">Modalità</th>
-                                <th scope="col">Durata (seconds)</th>
+                                <th scope="col">Durata</th>
                                 <th scope="col">Errori</th>
                                 <th scope="col">Data</th>
                                 <th scope="col">Frase</th>
@@ -47,10 +47,17 @@ $data = database_fetch_results($sort);
                         <tbody>
 
                             <?php foreach ($data as $row) : ?>
+                                <?php
+                                
+                                $durationMinutes = floor($row["duration"] / 60);
+                                $durationSeconds = round($row["duration"] - ($durationMinutes * 60));
+
+                                ?>
+
                                 <tr>
                                     <td scope="row"><?php echo htmlspecialchars($row["username"]) ?></td>
                                     <td><?php echo ucwords($row["gamemode"]) ?></td>
-                                    <td><?php echo round($row["duration"], 3) ?></td>
+                                    <td><?php echo $durationMinutes . "m " . $durationSeconds . "s" ?></td>
                                     <td><?php echo $row["attempts"] ?></td>
                                     <td><?php echo date("Y-m-d H:i:s", $row["date"]) ?></td>
                                     <td><?php echo htmlspecialchars($row["phrase"]) ?></td>
