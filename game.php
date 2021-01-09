@@ -59,6 +59,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         <?php include_once __DIR__ . "/partials/navbar.php" ?>
 
+        <?php include_once __DIR__ . "/partials/modals/game/won.php" ?>
+        <?php include_once __DIR__ . "/partials/modals/game/lost.php" ?>
+        <?php include_once __DIR__ . "/partials/modals/game/interrupt.php" ?>
+
         <div class="container">
             <?php include_once __DIR__ . "/partials/game/game.php" ?>
         </div>

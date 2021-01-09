@@ -138,6 +138,13 @@ function guess_phrase($phrase) {
     if ($isGuessRight) {
         $_SESSION["status"] = "won";
         $_SESSION["duration"] = microtime(true) - $_SESSION["start_time"];
+    } else {
+        $_SESSION["stage"] += 1;
+    }
+
+    if ($_SESSION["stage"] === 6) {
+        $_SESSION["status"] = "lost";
+        $_SESSION["duration"] = microtime(true) - $_SESSION["start_time"];
     }
 
     return $isGuessRight;

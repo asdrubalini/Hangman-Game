@@ -47,7 +47,7 @@ $data = database_fetch_results($sort);
 
                         <?php foreach ($data as $row) : ?>
                             <tr>
-                                <th scope="row"><?php echo htmlspecialchars($row["username"]) ?></th>
+                                <td scope="row"><?php echo htmlspecialchars($row["username"]) ?></td>
                                 <td><?php echo ucwords($row["gamemode"]) ?></td>
                                 <td><?php echo round($row["duration"], 3) ?></td>
                                 <td><?php echo $row["attempts"] ?></td>

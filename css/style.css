@@ -10,9 +10,13 @@
   .welcome__button--right {
     justify-content: flex-start; }
 
+.game__col {
+  padding: 0; }
+
 .word-guess__word {
   letter-spacing: 10px;
-  font-size: 6rem; }
+  font-size: 5vw;
+  overflow: hidden; }
 
 .word-guess__chronology {
   display: flex;
@@ -29,15 +33,21 @@
     margin-top: 5px; }
 
 .letter-badge {
-  height: 2rem !important;
-  width: 2rem !important;
-  font-size: 1.4rem;
+  height: 2.5rem !important;
+  width: 2.5rem !important;
+  font-size: 2.4rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 3px; }
+  margin: 4px; }
 
-#elapsed-minutes, #elapsed-seconds, #errors-count {
+.game-card {
+  border: 1.25px solid rgba(0, 0, 0, 0.125) !important;
+  border-radius: .3rem !important;
+  margin: 6px;
+  padding: 5px; }
+
+.elapsed-minutes, .elapsed-seconds, .errors-count {
   margin: 0 3px; }
 
 .container {

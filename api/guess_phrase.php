@@ -18,7 +18,9 @@ $res = [
     "hidden_phrase" => get_hidden_phrase(),
     "duration" => $_SESSION["duration"],
     "errors" => $_SESSION["stage"],
-    "condemned_image" => get_condemned_image()
+    "condemned_image" => get_condemned_image(),
+    "status" => $_SESSION["status"],
+    "stage" => $_SESSION["stage"]
 ];
 
 die(json_encode($res));

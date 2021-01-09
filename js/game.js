@@ -2,19 +2,21 @@ const phraseInput = $("#phrase-guess-input");
 const letterInput = $("#letter-guess-input");
 
 
-const onGameWon = (time_elapsed, errors_count) => {
+const onGameEnd = (status, time_elapsed, errors_count) => {
     const minutes = Math.floor(time_elapsed / 60);
     const seconds = Math.round(time_elapsed - (minutes * 60));
 
-    $("#elapsed-minutes").text(minutes);
-    $("#elapsed-seconds").text(seconds);
-    $("#errors-count").text(errors_count);
+    $(".elapsed-minutes").text(minutes);
+    $(".elapsed-seconds").text(seconds);
+    $(".errors-count").text(errors_count);
 
-    $("#won-modal").modal("show");
-}
+    if (status === "won") {
+        $("#won-modal").modal("show");
 
-const onGameLost = () => {
-    $("#lost-modal").modal("show");
+    } else if (status === "lost") {
+        $("#lost-modal").modal("show");
+
+    }
 }
 
 const onStageUpdated = (new_stage, condemned_image) => {
@@ -62,16 +64,8 @@ const apiGuessPhrase = (phrase) => {
                 $("#word").text(data.hidden_phrase);
                 onStageUpdated(data.stage, data.condemned_image);
 
-                if (data.status === "won") {
-                    onGameWon(data.duration, data.stage);
-                } else if (data.status === "lost") {
-                    onGameLost();
-                }
-
-                if (data.guess_status) {
-
-                } else {
-
+                if (data.status !== "playing") {
+                    onGameEnd(data.status, data.duration, data.stage);
                 }
             })
         })
@@ -102,19 +96,11 @@ const apiGuessLetter = (letter) => {
                 $("#chronology").empty();
                 onStageUpdated(data.stage, data.condemned_image);
 
-                if (data.status === "won") {
-                    onGameWon(data.duration, data.stage);
-                } else if (data.status === "lost") {
-                    onGameLost();
+                if (data.status !== "playing") {
+                    onGameEnd(data.status, data.duration, data.stage);
                 }
 
                 updateCharList();
-
-                if (data.guess_status) {
-                    // TODO
-                } else {
-
-                }
             })
         })
 }
@@ -142,7 +128,7 @@ letterInput.keypress((e) => {
 
 });
 
-$("#won-modal-no, #won-modal-close").click((e) => {
+$("#won-modal-no, #won-modal-close, #lost-modal-close, #lost-modal-close-button").click((e) => {
     window.location = "index.php";
 })
 
