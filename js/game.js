@@ -23,9 +23,9 @@ const onStageUpdated = (new_stage, condemned_image) => {
     $("#condemned").attr("src", condemned_image);
 }
 
-const updateCharList = () => {
+const updateChronologyList = () => {
     fetch(
-        "partials/game/tried_chars_list.php",
+        "partials/game/guesses_list.php",
         {
             method: "GET",
         }).then(response => {
@@ -67,6 +67,8 @@ const apiGuessPhrase = (phrase) => {
                 if (data.status !== "playing") {
                     onGameEnd(data.status, data.duration, data.stage);
                 }
+
+                updateChronologyList();
             })
         })
 }
@@ -100,7 +102,7 @@ const apiGuessLetter = (letter) => {
                     onGameEnd(data.status, data.duration, data.stage);
                 }
 
-                updateCharList();
+                updateChronologyList();
             })
         })
 }

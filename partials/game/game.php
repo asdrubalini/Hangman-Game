@@ -19,7 +19,9 @@
         <div class="card padded-card">
             <h5 class="word-guess__subtitle">Condannato</h5>
 
-            <img src="<?php echo get_condemned_image() ?>" id="condemned" class="img-fluid word-guess__condemned">
+            <div class="word-guess__condemned">
+                <img src="<?php echo get_condemned_image() ?>" id="condemned" class="img-fluid">
+            </div>
         </div>
     </div>
 
@@ -28,7 +30,7 @@
             <h5 class="word-guess__subtitle">Cronologia del gioco</h5>
 
             <div class="word-guess__chronology" id="chronology">
-                <?php include_once __DIR__ . "/tried_chars_list.php" ?>
+                <?php include_once __DIR__ . "/guesses_list.php" ?>
             </div>
         </div>
     </div>

@@ -20,10 +20,18 @@
 
 .word-guess__chronology {
   display: flex;
-  flex-direction: row; }
+  flex-direction: column; }
+  .word-guess__chronology__list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; }
 
 .word-guess__condemned {
-  width: 18rem; }
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .word-guess__condemned img {
+    width: 15rem; }
 
 .leaderboard-username {
   display: none;
@@ -36,6 +44,13 @@
   height: 2.5rem !important;
   width: 2.5rem !important;
   font-size: 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 4px; }
+
+.phrase-badge {
+  font-size: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;

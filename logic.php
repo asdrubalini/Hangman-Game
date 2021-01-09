@@ -56,6 +56,11 @@ function initialize_game($gamemode, $phrase) {
     $_SESSION["tried_chars"] = array();
 
     /**
+     * List of already tried phrases
+     */
+    $_SESSION["tried_phrases"] = array();
+
+    /**
      * When the user has started playing the game, stored
      * in UNIX epoch (the amount of seconds passed from 1 Jan 1970).
      * This is used to measure how much time the player
@@ -133,6 +138,7 @@ function guess_phrase($phrase) {
     $isGuessRight = $userPhrase === $gamePhrase;
     
     $_SESSION["attempts"] += 1;
+    array_push($_SESSION["tried_phrases"], $userPhrase);
 
     // User has won, set session status accordingly.
     if ($isGuessRight) {
