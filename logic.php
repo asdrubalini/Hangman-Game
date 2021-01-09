@@ -64,7 +64,7 @@ function initialize_game($gamemode, $phrase) {
      * has passed playing the current game.
      * Kept on the server to prevent leaderboard cheating.
      */
-    $_SESSION["start_time"] = time();
+    $_SESSION["start_time"] = microtime(true);
 
     /**
      * Total attempts of the player, like "stage" but also including
@@ -139,7 +139,7 @@ function guess_phrase($phrase) {
     // User has won, set session status accordingly.
     if ($isGuessRight) {
         $_SESSION["status"] = "won";
-        $_SESSION["duration"] = time() - $_SESSION["start_time"];
+        $_SESSION["duration"] = microtime(true) - $_SESSION["start_time"];
     }
 
     return $isGuessRight;
@@ -167,23 +167,12 @@ function guess_letter($letter) {
 
     if ($_SESSION["stage"] === 6) {
         $_SESSION["status"] = "lost";
-        $_SESSION["duration"] = time() - $_SESSION["start_time"];
+        $_SESSION["duration"] = microtime(true) - $_SESSION["start_time"];
 
     } else if (strtolower(get_hidden_phrase()) === $gamePhrase) {
         $_SESSION["status"] = "won";
-        $_SESSION["duration"] = time() - $_SESSION["start_time"];
+        $_SESSION["duration"] = microtime(true) - $_SESSION["start_time"];
     }
 
     return $isGuessRight;
-}
-
-function get_leaderboard() {
-    $content = file_get_contents(__DIR__ . "/storage/leaderboard.txt");
-    $leaderboard = array();
-
-    foreach (explode("\n", $content) as $obj) {
-        array_push($leaderboard, json_decode($obj));
-    }
-
-    return $leaderboard;
 }

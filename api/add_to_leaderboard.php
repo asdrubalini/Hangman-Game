@@ -2,23 +2,19 @@
 
 include_once __DIR__ . "/../logic.php";
 include_once __DIR__ . "/common.php";
+include_once __DIR__ . "/../database.php";
 
 common_init();
 
 die_if_missing_parameters(array("username"));
 
 $username = $_POST["username"];
+$duration = $_SESSION["duration"];
+$attempts = $_SESSION["stage"];
+$phrase = $_SESSION["phrase"];
+$gamemode = $_SESSION["gamemode"];
 
-$leaderboardFile = fopen(__DIR__ . "/../storage/leaderboard.txt", "a") or die("Cannot open leaderboard file");
-
-$data = [
-    "username" => $username,
-    "stage" => $_SESSION["stage"],
-    "duration" => $_SESSION["duration"]
-];
-
-fwrite($leaderboardFile, json_encode($data) . "\n");
-fclose($leaderboardFile);
+database_add_result($username, $duration, $attempts, $phrase, time(), $gamemode);
 
 $res = [
     "success" => "true",

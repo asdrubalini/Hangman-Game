@@ -4,9 +4,7 @@ const letterInput = $("#letter-guess-input");
 
 const onGameWon = (time_elapsed, errors_count) => {
     const minutes = Math.floor(time_elapsed / 60);
-    const seconds = time_elapsed - (minutes * 60);
-
-    console.log(time_elapsed);
+    const seconds = Math.round(time_elapsed - (minutes * 60));
 
     $("#elapsed-minutes").text(minutes);
     $("#elapsed-seconds").text(seconds);
