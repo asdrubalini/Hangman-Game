@@ -38,11 +38,11 @@
             </div>
 
             <div class="row">
-                <div class="col welcome__button">
+                <div class="col welcome__button welcome__button--left">
                     <button type="button" class="btn btn-primary" id="start-singleplayer">Singleplayer</button> 
                 </div>
 
-                <div class="col welcome__button">
+                <div class="col welcome__button welcome__button--right">
                     <button type="button" class="btn btn-primary" id="start-multiplayer">Multiplayer</button>
                 </div>
 

@@ -3,9 +3,12 @@
 
 .welcome__button {
   display: flex;
-  justify-content: center; }
-  .welcome__button button {
-    margin: 0 5px; }
+  justify-content: center;
+  margin: 0 5px; }
+  .welcome__button--left {
+    justify-content: flex-end; }
+  .welcome__button--right {
+    justify-content: flex-start; }
 
 .word-guess__word {
   letter-spacing: 10px;

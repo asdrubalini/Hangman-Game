@@ -6,9 +6,14 @@
     &__button {
         display: flex;
         justify-content: center;
+        margin: 0 5px;
 
-        button {
-            margin: 0 5px;
+        &--left {
+            justify-content: flex-end;
+        }
+
+        &--right {
+            justify-content: flex-start;
         }
     }
 }
