@@ -1,7 +1,7 @@
 <?php
+session_start();
 
 $sort = isset($_GET["sort"]) ? $_GET["sort"] : "duration";
-
 
 include_once __DIR__ . "/database.php";
 $data = database_fetch_results($sort);

@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 include_once __DIR__ . "/../logic.php";
 include_once __DIR__ . "/common.php";
 include_once __DIR__ . "/../database.php";

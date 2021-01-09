@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <?php include_once __DIR__ . "/../../logic.php" ?>
 
 <?php foreach ($_SESSION["tried_chars"] as $char) : ?>

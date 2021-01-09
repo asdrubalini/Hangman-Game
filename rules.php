@@ -1,5 +1,6 @@
-<html>
+<?php session_start() ?>
 
+<html>
     <head>
         <?php $titleExtra = "Regole" ?>
         <?php include_once __DIR__ . "/partials/head.php" ?>

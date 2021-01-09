@@ -6,8 +6,6 @@
 
 include_once __DIR__ . "/debug.php";
 
-session_start();
-
 function generate_random_phrase() {
     /**
      * Generate a random phrase from the dictionary in dati.php.

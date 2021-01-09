@@ -3,12 +3,12 @@
         font-size: 3rem;
     }
 
-    &__buttons {
+    &__button {
         display: flex;
         justify-content: center;
-    }
 
-    &__button {
-        margin: 0 5px;
+        button {
+            margin: 0 5px;
+        }
     }
 }

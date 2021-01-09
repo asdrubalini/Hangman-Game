@@ -1,12 +1,11 @@
 .welcome__title {
   font-size: 3rem; }
 
-.welcome__buttons {
+.welcome__button {
   display: flex;
   justify-content: center; }
-
-.welcome__button {
-  margin: 0 5px; }
+  .welcome__button button {
+    margin: 0 5px; }
 
 .word-guess__word {
   letter-spacing: 10px;
@@ -39,7 +38,8 @@
   margin: 0 3px; }
 
 .container {
-  margin-top: 10px; }
+  margin-top: 10px;
+  margin-bottom: 10px; }
 
 table {
   margin-top: 10px; }

@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 include_once __DIR__ . "/../logic.php";
 
 function assert_post_request() {
