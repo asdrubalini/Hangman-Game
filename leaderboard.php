@@ -35,11 +35,11 @@ $data = database_fetch_results($sort);
                     <thead>
                         <tr>
                             <th scope="col">Username</th>
-                            <th scope="col">Gamemode</th>
-                            <th scope="col">Duration (seconds)</th>
-                            <th scope="col">Attempts</th>
-                            <th scope="col">Date</th>
-                            <th scope="col">Phrase</th>
+                            <th scope="col">Modalità</th>
+                            <th scope="col">Durata (seconds)</th>
+                            <th scope="col">Errori</th>
+                            <th scope="col">Data</th>
+                            <th scope="col">Frase</th>
                         </tr>
                     </thead>
 

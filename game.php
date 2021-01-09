@@ -60,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <?php include_once __DIR__ . "/partials/navbar.php" ?>
 
         <div class="container">
-            <?php include_once __DIR__ . "/partials/word-guess.php" ?>
+            <?php include_once __DIR__ . "/partials/game/game.php" ?>
         </div>
 
         <?php include_once __DIR__ . "/partials/javascript.php" ?>

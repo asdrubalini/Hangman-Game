@@ -111,7 +111,7 @@
         <h5 class="word-guess__subtitle">Cronologia del gioco</h5>
 
         <div class="word-guess__chronology" id="chronology">
-            <?php include_once __DIR__ . "/game/tried_chars_list.php" ?>
+            <?php include_once __DIR__ . "/tried_chars_list.php" ?>
         </div>
     </div>
 
