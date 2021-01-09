@@ -2,13 +2,12 @@
 <?php include_once __DIR__ . "/logic.php" ?>
 
 <html>
-
     <head>
         <?php include_once __DIR__ . "/partials/head.php" ?>
     </head>
 
     <body>
-        <?php include_once __DIR__ . "/partials/header.php" ?>
+        <?php include_once __DIR__ . "/partials/navbar.php" ?>
 
         <?php include_once __DIR__ . "/partials/modals/index/multiplayer.php" ?>
         <?php include_once __DIR__ . "/partials/modals/index/singleplayer.php" ?>
@@ -23,24 +22,19 @@
         <div class="container welcome">
 
             <div class="row">
-                <p class="welcome__title">Impiccato</p>
+                <div class="col-sm">
+                    <p class="welcome__title">Impiccato</p>
+                </div>
             </div>
 
             <div class="row">
-
                 <div class="col-sm">
-
-
-                    <div class="row">
-                        <img class="img-fluid" src="images/logo.png">
-                    </div>
-                    
+                    <img class="img-fluid" src="images/logo.png">
                 </div>
 
                 <div class="col-sm">
                     <?php include_once __DIR__ . "/partials/rules.php" ?>
                 </div>
-
             </div>
 
             <div class="row">

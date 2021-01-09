@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     <body>
 
-        <?php include_once __DIR__ . "/partials/header.php" ?>
+        <?php include_once __DIR__ . "/partials/navbar.php" ?>
 
         <div class="container">
             <?php include_once __DIR__ . "/partials/word-guess.php" ?>

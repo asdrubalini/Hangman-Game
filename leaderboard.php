@@ -15,7 +15,7 @@ $data = database_fetch_results($sort);
 </head>
 
 <body>
-    <?php include_once __DIR__ . "/partials/header.php" ?>
+    <?php include_once __DIR__ . "/partials/navbar.php" ?>
 
     <div class="container rules">
         <div class="row">
