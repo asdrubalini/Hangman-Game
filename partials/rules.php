@@ -2,7 +2,8 @@
 
 <p>L'impiccato è un famosissimo gioco che consiste nel provare ad indovinare una frase nascosta,
 lettera per lettera. Inizialmente sono vibili solamente la lunghezza di ogni parola all'interno
-della frase e la posizione degli spazi.</p>
+della frase e la posizione degli spazi. I tentativi a disposizione sono solo sette e sono visualizzati
+dall'immagine sulla sinistra.</p>
 
 <ul>
     <li>Scegli la modalità utilizzando i due bottoni presenti sotto</li>
