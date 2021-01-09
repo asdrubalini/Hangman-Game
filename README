@@ -2,3 +2,5 @@ Il progetto è sviluppato utilizzando Docker e il compose presente nella repo ht
 
 In caso di problemi nell'esecuzione del codice, è disponibile una versione online 100% funzionante e sempre aggiornata
 all'indirizzo https://nabucodonosor.xyz/hangman/
+
+Il software usa SQLite3 come database per alcune sue funzioni, tuttavia il programma dovrebbe funzionare quasi interaamente anche senza.
