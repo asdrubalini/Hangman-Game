@@ -158,8 +158,10 @@ $("#leaderboard-username-add-button").click((e) => {
             response.json().then(data => {
                 if (data.success) {
                     console.log("Username added successfully");
+                    window.location = "leaderboard.php";
                 } else {
                     console.log("Error while adding username");
+                    window.location = "index.php";
                 }
 
             })

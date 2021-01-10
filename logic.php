@@ -98,6 +98,11 @@ function get_hidden_phrase() {
     $triedChars = $_SESSION["tried_chars"];
     $hiddenPhrase = "";
 
+    // Return the whole phrase if the user has won
+    if ($_SESSION["status"] === "won") {
+        return $actualPhrase;
+    }
+
     for ($i = 0; $i < strlen($actualPhrase); $i++) {
         $currentChar = $lowerCasePhrase[$i];
 
@@ -144,7 +149,6 @@ function guess_phrase($phrase) {
     if ($isGuessRight) {
         $_SESSION["status"] = "won";
         $_SESSION["duration"] = microtime(true) - $_SESSION["start_time"];
-        // $_SESSION["tried_chars"] = explode("", "ABCDEFGHIJKLMNOPQRSTUVWXYZ");
     } else {
         $_SESSION["stage"] += 1;
     }

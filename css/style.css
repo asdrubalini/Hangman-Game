@@ -12,7 +12,7 @@
 
 .word-guess__word {
   letter-spacing: 10px;
-  font-size: 5vw;
+  font-size: 50px;
   overflow: hidden; }
 
 .word-guess__chronology {
