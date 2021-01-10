@@ -10,9 +10,6 @@
   .welcome__button--right {
     justify-content: flex-start; }
 
-.game__col {
-  padding: 0; }
-
 .word-guess__word {
   letter-spacing: 10px;
   font-size: 5vw;
@@ -25,6 +22,9 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap; }
+  .word-guess__chronology__empty {
+    font-size: 0.8rem;
+    color: grey; }
 
 .word-guess__condemned {
   display: flex;

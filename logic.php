@@ -144,6 +144,7 @@ function guess_phrase($phrase) {
     if ($isGuessRight) {
         $_SESSION["status"] = "won";
         $_SESSION["duration"] = microtime(true) - $_SESSION["start_time"];
+        // $_SESSION["tried_chars"] = explode("", "ABCDEFGHIJKLMNOPQRSTUVWXYZ");
     } else {
         $_SESSION["stage"] += 1;
     }

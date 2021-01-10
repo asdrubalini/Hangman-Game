@@ -22,6 +22,11 @@
             flex-direction: row;
             flex-wrap: wrap;
         }
+
+        &__empty {
+            font-size: 0.8rem;
+            color: grey;
+        }
     }
 
     &__condemned {
