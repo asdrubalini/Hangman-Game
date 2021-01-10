@@ -53,14 +53,22 @@
                 <div class="col">
                     <div class="card padded-card">
                         <h5 class="word-guess__subtitle">Soluzione</h5>
-                        <input type="text" class="form-control" id="phrase-guess-input">
+
+                        <div class="d-flex flex-row">
+                            <input type="text" class="form-control" id="phrase-guess-input">
+                            <button class="btn btn-primary" type="button" id="guess-phrase">Invia</button>
+                        </div> 
                     </div>
                 </div>
 
                 <div class="col">
                     <div class="card padded-card">
                         <h5 class="word-guess__subtitle">Lettera</h5>
-                        <input type="text" class="form-control" id="letter-guess-input">
+
+                        <div class="d-flex flex-row">
+                            <input type="text" class="form-control" id="letter-guess-input">
+                            <button class="btn btn-primary" type="button" id="guess-letter">Invia</button>
+                        </div> 
                     </div>
                 </div>
             </div>

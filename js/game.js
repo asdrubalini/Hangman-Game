@@ -117,6 +117,13 @@ phraseInput.keypress((e) => {
 
 });
 
+$("#guess-phrase").click((e) => {
+    if (phraseInput.val() !== "") {
+        apiGuessPhrase(phraseInput.val());
+        phraseInput.val("");
+    }
+})
+
 letterInput.keypress((e) => {
 
     // Limit input field to one char only
@@ -130,6 +137,13 @@ letterInput.keypress((e) => {
     }
 
 });
+
+$("#guess-letter").click((e) => {
+    if (letterInput.val() !== "") {
+        apiGuessLetter(letterInput.val());
+        letterInput.val("");
+    }
+})
 
 $("#won-modal-no, #won-modal-close, #lost-modal-close, #lost-modal-close-button").click((e) => {
     window.location = "index.php";
