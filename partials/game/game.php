@@ -56,7 +56,7 @@
 
                         <div class="d-flex flex-row">
                             <input type="text" class="form-control" id="phrase-guess-input">
-                            <button class="btn btn-primary" type="button" id="guess-phrase">Invia</button>
+                            <button class="btn btn-primary" type="button" id="guess-phrase" style="margin-left: 5px">Invia</button>
                         </div> 
                     </div>
                 </div>
@@ -67,7 +67,7 @@
 
                         <div class="d-flex flex-row">
                             <input type="text" class="form-control" id="letter-guess-input">
-                            <button class="btn btn-primary" type="button" id="guess-letter">Invia</button>
+                            <button class="btn btn-primary" type="button" id="guess-letter" style="margin-left: 5px">Invia</button>
                         </div> 
                     </div>
                 </div>
