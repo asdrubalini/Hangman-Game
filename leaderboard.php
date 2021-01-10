@@ -1,10 +1,19 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 $sort = isset($_GET["sort"]) ? $_GET["sort"] : "duration";
 
 include_once __DIR__ . "/database.php";
+
 $data = database_fetch_results($sort);
+
+if ($data === ERROR_SQLITE3_NOT_INSTALLED) {
+    require_once __DIR__ . "/partials/errors/sqlite_not_installed.php";
+    die();
+}
+
 ?>
 
 <html>

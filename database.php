@@ -2,11 +2,18 @@
 
 $DATABASE_PATH = __DIR__ . "/storage/database.db";
 
+const ERROR_SQLITE3_NOT_INSTALLED = -1;
+
 function database_add_result($username, $duration, $attempts, $phrase, $date, $gamemode) {
     /**
      * Add a new result to database.
      * Data is passed as parameters
      */
+    
+    // Check if SQLite3 is installed
+    if (!class_exists("SQLite3")) {
+        return ERROR_SQLITE3_NOT_INSTALLED;
+    }
     
     $db = new SQLite3(__DIR__ . "/storage/database.db");
 
@@ -26,6 +33,11 @@ function database_fetch_results($sort) {
     /**
      * Fetch results from database ordered by $sort
      */
+
+    // Check if SQLite3 is installed
+    if (!class_exists("SQLite3")) {
+        return ERROR_SQLITE3_NOT_INSTALLED;
+    }
 
     $db = new SQLite3(__DIR__ . "/storage/database.db");
 

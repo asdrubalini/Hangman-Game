@@ -74,6 +74,11 @@ function initialize_game($gamemode, $phrase) {
      * the right attempts.
      */
     $_SESSION["attempts"] = 0;
+
+    /**
+     * Duration time of the game, in seconds
+     */
+    $_SESSION["duration"] = null;
 }
 
 function is_playing() {

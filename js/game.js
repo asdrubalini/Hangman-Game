@@ -176,7 +176,7 @@ $("#leaderboard-username-add-button").click((e) => {
                     window.location = "leaderboard.php";
                 } else {
                     console.log("Error while adding username");
-                    window.location = "index.php";
+                    window.location = "partials/errors/sqlite_not_installed.php";
                 }
 
             })
