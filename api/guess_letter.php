@@ -20,7 +20,8 @@ $res = [
     "stage" => $_SESSION["stage"],
     "status" => $_SESSION["status"],
     "duration" => $_SESSION["duration"],
-    "condemned_image" => get_condemned_image()
+    "condemned_image" => get_condemned_image(),
+    "remaining_attempts" => get_remaining_attempts()
 ];
 
 die(json_encode($res));

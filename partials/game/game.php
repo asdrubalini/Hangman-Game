@@ -21,6 +21,7 @@
 
             <div class="word-guess__condemned">
                 <img src="<?php echo get_condemned_image() ?>" id="condemned" class="img-fluid">
+                <p>Tentativi rimasti: <span id="remaining-attempts"><?php echo get_remaining_attempts() ?></span></p>
             </div>
         </div>
     </div>

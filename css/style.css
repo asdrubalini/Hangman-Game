@@ -29,7 +29,8 @@
 .word-guess__condemned {
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  flex-direction: column; }
   .word-guess__condemned img {
     width: 15rem; }
 

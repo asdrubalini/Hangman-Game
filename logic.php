@@ -192,3 +192,7 @@ function guess_letter($letter) {
 
     return $isGuessRight;
 }
+
+function get_remaining_attempts() {
+    return 6 - $_SESSION["stage"];
+}

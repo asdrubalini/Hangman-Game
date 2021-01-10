@@ -19,8 +19,9 @@ const onGameEnd = (status, time_elapsed, errors_count) => {
     }
 }
 
-const onStageUpdated = (new_stage, condemned_image) => {
+const onStageUpdated = (new_stage, condemned_image, remaining_attempts) => {
     $("#condemned").attr("src", condemned_image);
+    $("#remaining-attempts").text(remaining_attempts);
 }
 
 const updateChronologyList = () => {
@@ -62,7 +63,7 @@ const apiGuessPhrase = (phrase) => {
                 }
 
                 $("#word").text(data.hidden_phrase);
-                onStageUpdated(data.stage, data.condemned_image);
+                onStageUpdated(data.stage, data.condemned_image, data.remaining_attempts);
 
                 if (data.status !== "playing") {
                     onGameEnd(data.status, data.duration, data.stage);
@@ -96,7 +97,7 @@ const apiGuessLetter = (letter) => {
 
                 $("#word").text(data.hidden_phrase);
                 $("#chronology").empty();
-                onStageUpdated(data.stage, data.condemned_image);
+                onStageUpdated(data.stage, data.condemned_image, data.remaining_attempts);
 
                 if (data.status !== "playing") {
                     onGameEnd(data.status, data.duration, data.stage);
